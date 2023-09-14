@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = # -O3 -mavx -march=native
+CFLAGS = -Wall -O3 -mavx -march=native
 TARGET = interpola
 SRCS = main.c point.c
 OBJS = $(SRCS:.c=.o)
@@ -14,3 +14,7 @@ $(TARGET): $(OBJS)
 
 purge:
 	rm -f $(TARGET) $(OBJS)
+
+run: # So pra facilitar os testes (temporario)
+	./$(TARGET) 4 < pontos.in
+	

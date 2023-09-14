@@ -1,3 +1,6 @@
+#ifndef POINT_H
+#define POINT_H
+
 struct point
 {
     double x;
@@ -11,4 +14,6 @@ void create_points(point_t ***points, unsigned int size);
 void print_points(point_t **points, unsigned int size);
 
 void free_points(point_t ***points, unsigned int size);
+
+#endif
 
