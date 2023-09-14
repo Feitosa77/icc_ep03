@@ -3,10 +3,9 @@
 
 #include "point.h"
 
-void interpolate_lagrange(point_t **points, unsigned int size);
+double interpolate_lagrange(point_t **points, unsigned int size, double x);
 
-void interpolate_newton();
-
+double interpolate_newton(point_t **points, unsigned int size, double x);
 
 #endif
 

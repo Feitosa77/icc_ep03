@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "point.h"
+#include "interpolate.h"
 
 int main(int argc, char *argv[])
 {
@@ -15,7 +16,8 @@ int main(int argc, char *argv[])
 
     scanf("%u", &size);
     create_points(&points, size);
-    print_points(points, size);
+
+    printf("Lagrange: %lf\n", interpolate_lagrange(points, size, value));
     
     free_points(&points, size);
     
