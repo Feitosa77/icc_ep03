@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -O3 -mavx -march=native
 TARGET = interpola
-SRCS = main.c point.c interpolate.c
+SRCS = main.c point.c interpolate.c utils.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(TARGET)

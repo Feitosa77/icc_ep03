@@ -1,0 +1,6 @@
+falta:
+    - Caso o valor xe não pertença ao intervalo da tabela de pontos,
+    deve ser exibida uma mensagem de erro na SAÍDA PADRÃO DE ERROS (stderr)
+    - Otimizar os codigos
+        Newton: remover recursao, nao recalcular os valores
+        Lagrange: nao recalcular os valores
