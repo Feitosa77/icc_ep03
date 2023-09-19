@@ -14,10 +14,18 @@ int main(int argc, char *argv[])
     unsigned int size;
     
     double value = atof(argv[1]);
-    double time_lagrange, time_newton, aux;
+    double interval[2]; /* [min, max] */
 
     scanf("%u", &size);
     create_points(&points, size);
+    get_interval(points, size, interval);
+
+    if (value < interval[0] || value > interval[1]) {
+        fprintf(stderr, "Valor xe invalido\n");
+        return EXIT_FAILURE;
+    }
+
+    double time_lagrange, time_newton, aux;
 
     /* Interpolacao */
     time_lagrange = timestamp();

@@ -15,5 +15,7 @@ void print_points(point_t **points, unsigned int size);
 
 void free_points(point_t ***points, unsigned int size);
 
+void get_interval(point_t **points, unsigned int size, double *interval);
+
 #endif
 

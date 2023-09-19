@@ -27,3 +27,14 @@ void free_points(point_t ***points, unsigned int size)
     free(*points);
 }
 
+void get_interval(point_t **points, unsigned int size, double *interval)
+{
+    interval[0] = points[0]->x;
+    interval[1] = points[0]->x;
+
+    for (int i = 1; i < size; ++i) {
+        if (interval[0] > points[i]->x) interval[0] = points[i]->x; /* Min */
+        if (interval[1] < points[i]->x) interval[1] = points[i]->x; /* Max */
+    }
+}
+
