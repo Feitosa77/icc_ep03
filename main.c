@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     create_points(&points, size);
     get_interval(points, size, interval);
 
-    if (value < interval[0] || value > interval[1]) {
+    if (value < interval[0] || value > interval[1]) { /* !!! */
         fprintf(stderr, "Valor xe invalido\n");
         return EXIT_FAILURE;
     }

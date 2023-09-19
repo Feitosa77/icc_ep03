@@ -14,7 +14,3 @@ $(TARGET): $(OBJS)
 
 purge:
 	rm -f $(TARGET) $(OBJS)
-
-run: # So pra facilitar os testes (temporario)
-	./$(TARGET) 20 < pontos.in
-	
