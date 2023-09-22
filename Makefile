@@ -1,16 +1,28 @@
 CC = gcc
 CFLAGS = -Wall -O3 -mavx -march=native
+
+LIKWID_C = -DLIKWID_PERFMON -I${LIKWID_INCLUDE}
+LIKWID_O = -L${LIKWID_LIB} -llikwid
+
 TARGET = interpola
-SRCS = main.c point.c interpolate.c utils.c
-OBJS = $(SRCS:.c=.o)
 
-all: $(TARGET)
+#Error
+all: main.c point.o interpolate.o utils.o
+	$(CC) $(CFLAGS) $(LIKWID_C) -c main.c
+	$(CC) -o $(TARGET) main.o point.o interpolate.o utils.o $(LIKWID_O)
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
+point.o: point.c point.h
+	$(CC) -c -Wall point.c
 
-%.o: %.c %.h
-	$(CC) $(CFLAGS) -c $< -o $@
+interpolate.o: interpolate.c interpolate.h
+	$(CC) -c -Wall interpolate.c
 
-purge:
-	rm -f $(TARGET) $(OBJS)
+utils.o: utils.c utils.h
+	$(CC) -c -Wall utils.c
+
+clean:
+	rm -f *.o
+
+purge: clean
+	rm -f $(TARGET)
+

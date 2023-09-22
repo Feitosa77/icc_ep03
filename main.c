@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <likwid.h>
 
 #include "point.h"
 #include "interpolate.h"
@@ -27,16 +28,29 @@ int main(int argc, char *argv[])
 
     double time_lagrange, time_newton, aux;
 
+    LIKWID_MARKER_INIT;
+
+    char MARKER_NAME[] = "MarkerI";
+
     /* Interpolacao */
-    time_lagrange = timestamp();
-        aux = interpolate_lagrange(points, size, value);
-    time_lagrange = timestamp() - time_lagrange;
+    LIKWID_MARKER_START(MARKER_NAME);
+        time_lagrange = timestamp();
+            aux = interpolate_lagrange(points, size, value);
+        time_lagrange = timestamp() - time_lagrange;
+    LIKWID_MARKER_STOP(MARKER_NAME);
 
     printf("%lf\n", aux);
 
-    time_newton = timestamp();
-        aux = interpolate_newton(points, size, value);
-    time_newton = timestamp() - time_newton;
+    MARKER_NAME[6] += 48; /* MARKER_NAME := "MarkerI" */
+
+    
+    LIKWID_MARKER_START(MARKER_NAME);
+        time_newton = timestamp();
+            aux = interpolate_newton(points, size, value);
+        time_newton = timestamp() - time_newton;
+    LIKWID_MARKER_STOP(MARKER_NAME);
+
+    LIKWID_MARKER_CLOSE;
 
     printf("%lf\n", aux);
 

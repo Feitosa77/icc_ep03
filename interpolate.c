@@ -22,7 +22,7 @@ double interpolate_lagrange(point_t **points, unsigned int size, double x) /* Se
     return p;
 }
 
-/* Ineficiente - Implementacao ingenua */
+/* Implementacao ingenua */
 
 double dd(point_t **points, unsigned int i, unsigned int j) /* def rec */
 {
