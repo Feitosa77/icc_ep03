@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     create_points(&points, size);
     get_interval(points, size, interval);
 
-    if (value < interval[0] || value > interval[1]) { /* !!! */
+    if (value < interval[0] || value > interval[1]) { 
         fprintf(stderr, "Valor xe invalido\n");
         return EXIT_FAILURE;
     }
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
     LIKWID_MARKER_INIT;
 
-    char MARKER_NAME[] = "MarkerI";
+    char MARKER_NAME[] = "MarkerL";
 
     /* Interpolacao */
     LIKWID_MARKER_START(MARKER_NAME);
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 
     printf("%lf\n", aux);
 
-    MARKER_NAME[6] += 48; /* MARKER_NAME := "MarkerI" */
+    MARKER_NAME[6] += 2; /* MARKER_NAME := "MarkerN" */
 
     
     LIKWID_MARKER_START(MARKER_NAME);

@@ -2,11 +2,12 @@
 
 make
 
+echo "Digite o valor do parâmetro: "
 read Xe
 
-echo "performance" > /sys/devices/system/cpu/cpufreq/policy3/scaling_governo
+likwid-perfctr -C 3 -g FLOPS_DP -m ./interpola $Xe < pontos.in > resultado.out
 
-likwid-perfctr -C 3 -g FLOPS_DP -m ./interpola $Xe < pontos.in > resultado.out # grep "DP MFLOP/s"
+grep "DP MFLOP/s" < resultado.out
 
-echo "powersave" > /sys/devices/system/cpu/cpufreq/policy3/scaling_governor
+make purge
 
